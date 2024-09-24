@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="flex items-center justify-center min-h-screen bg-fuchsia-100">
+        <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
+            {% for flash_error in app.flashes('verify_email_error') %}
+                <div class="bg-red-100 text-red-500 p-3 rounded mb-4 text-center" role="alert">{{ flash_error }}</div>
+            {% endfor %}
+
+            <h1 class="text-2xl font-semibold text-center mb-6">S'inscrire</h1>
+
+            {{ form_start(registrationForm) }}
+
+            <div class="mb-4">
+                <label for="name" class="block mb-2 text-sm font-medium">Name</label>
+                {{ form_widget(registrationForm.name, {'attr': {'class': 'w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-rose-200'}}) }}
+            </div>
+
+            <div class="mb-4">
+                <label for="lastName" class="block mb-2 text-sm font-medium">Lastname</label>
+                {{ form_widget(registrationForm.lastName, {'attr': {'class': 'w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-rose-200'}}) }}
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="block mb-2 text-sm font-medium">Email</label>
+                {{ form_widget(registrationForm.email, {'attr': {'class': 'w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-rose-200'}}) }}
+            </div>
+
+            <div class="mb-6">
+                <label for="password" class="block mb-2 text-sm font-medium">Password</label>
+                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-rose-200'}}) }}
+            </div>
+
+            <div class="mb-6">
+                <label class="inline-flex items-center">
+                    {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'mr-2'}}) }}
+                    <span class="text-sm">I agree to the terms and conditions</span>
+                </label>
+            </div>
+
+            <button type="submit" class="w-full bg-rose-200 text-black p-3 rounded-lg font-semibold text-center hover:bg-rose-400">
+                Register
+            </button>
+
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}
