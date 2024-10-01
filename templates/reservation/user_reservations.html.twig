@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Réservations{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/reservations-user.css') }}">
+{% endblock %}
+
+{% block body %}
+<section class="user-reservations optimal-width">
+    <h1>Mes Réservations</h1>
+
+    {% if reservations is empty %}
+        <p>Vous n'avez aucune réservation.</p>
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom de la salle</th>
+                    <th>Jour de la réservation</th>
+                    <th>Créneau horaire</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                    <tr>
+                        <td>{{ reservation.roomId.name }}</td>
+                        <td>{{ reservation.createdAt|date('d/m/Y') }}</td>
+                        <td>{{ reservation.createdAt|date('H:i') }} - {{ reservation.endAt|date('H:i') }}</td>
+                        <td>{{ reservation.status }}</td>
+                        <td>
+                            {% if reservation.status != 'confirmed' and reservation.status != 'refused' %}
+                                <a href="{{ path('app_reservation_edit', {id: reservation.id}) }}" class="btn btn-primary">Modifier</a>
+                                <form action="{{ path('app_reservation_delete', {id: reservation.id}) }}" method="post" style="display:inline;">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reservation.id) }}">
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <a href="{{ path('app_homepage') }}">Retour à l'accueil</a>
+</section>
+{% endblock %}

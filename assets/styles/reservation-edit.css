@@ -1,0 +1,40 @@
+/* Styles pour la section de modification de réservation */
+.edit-reservation {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-reservation h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.edit-reservation form {
+    margin-bottom: 20px;
+}
+
+.edit-reservation button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-reservation button:hover {
+    background-color: #0056b3;
+}
+
+.edit-reservation a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.edit-reservation a:hover {
+    text-decoration: underline;
+}

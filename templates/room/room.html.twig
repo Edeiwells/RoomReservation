@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ReservationRoom{% endblock %}
+
+{% block body %}
+<section class="room-section optimal-width">
+
+    <h1>Nos salles disponibles</h1>
+
+    <div class="room-section-filters">
+        <h3>Filtrer par équipements :</h3>
+       <ul>
+            <li><a href="{{ path('app_room') }}">Tous</a></li>
+            {% for equipment in equipments %}
+                <li><a href="{{ path('app_room', {'equipments': [equipment.id]}) }}">{{ equipment.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% if rooms is not empty %}
+    <div class="room-section-grid">
+        {% for room in rooms %}
+            <div class="room-section-room">
+                <a href="{{ path('app_room_show', {'id': room.id}) }}">
+                    <h3>{{ room.name }}</h3>
+                </a>
+                <p>Capacité: {{ room.capacity }}</p>
+                <p>Équipements:</p>
+                <ul>
+                    {% for equipment in room.equipments %}
+                        <li>{{ equipment.name }}</li>
+                    {% endfor %}
+                </ul>
+                <a href="{{ path('app_reservation', {'roomId': room.id}) }}">Réserver</a>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>Il n'y a pas de salle disponible</p>
+    {% endif %}
+
+</section>
+{% endblock %}

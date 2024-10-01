@@ -23,8 +23,8 @@ class Reservation
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\Column]
-    private ?bool $status = null;
+    #[ORM\Column(type: Types::STRING, length: 100)]
+    private ?string $status = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -73,12 +73,12 @@ class Reservation
         return $this;
     }
 
-    public function isStatus(): ?bool
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function setStatus(bool $status): static
+    public function setStatus(string $status): static
     {
         $this->status = $status;
 

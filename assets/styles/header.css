@@ -1,0 +1,112 @@
+/* Réinitialiser les marges et le padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: hsl(210, 78%, 79%);
+    /* Couleur de fond de la navbar */
+    padding: 20px 0;
+    /* Espace interne pour la hauteur */
+    border-bottom: 1px solid #6899a5;
+    /* Ligne de séparation en bas */
+    height: 80px;
+    /* Hauteur fixe de la navbar */
+    position: fixed;
+    /* Fixe le header en haut */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    /* S'assure que le header reste au-dessus des autres éléments */
+}
+
+.optimal-width {
+    max-width: 1200px;
+    /* Largeur maximale du contenu */
+    margin: 0 auto;
+    /* Centrer le contenu */
+    padding: 0 20px;
+    /* Ajoute un padding latéral */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    /* Espace entre le logo et les liens */
+    align-items: center;
+    /* Centrer verticalement */
+    height: 100%;
+    /* Occupe toute la hauteur du header */
+}
+
+.logo {
+    height: 40px;
+    /* Taille du logo */
+    width: auto;
+    /* Garde les proportions */
+    pointer-events: none;
+    /* Désactive le hover/clic sur le logo */
+    margin-left: 10rem;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    /* Espace uniforme autour des liens */
+    gap: 40px;
+    /* Espace entre les liens */
+}
+
+.default-link {
+    text-decoration: none;
+    /* Retire le soulignement */
+    color: #1215da;
+    /* Couleur des liens */
+    font-weight: 500;
+    /* Légèrement en gras */
+    padding: 10px 50px;
+    /* Espace autour des liens */
+    border-radius: 5px;
+    /* Coins arrondis */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Transition pour le hover */
+}
+
+.default-link:hover {
+    background-color: #a0e7d86b;
+    /* Change la couleur de fond au hover */
+    color: #fff;
+    /* Change la couleur du texte au hover */
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        /* Colonne pour petits écrans */
+        align-items: flex-start;
+        /* Aligne les éléments à gauche */
+    }
+
+    .links {
+        justify-content: flex-start;
+        /* Aligne les liens à gauche sur mobile */
+        flex-direction: column;
+        /* Liens empilés en colonne */
+        gap: 10px;
+        /* Espacement vertical entre les liens */
+        width: 100%;
+    }
+
+    .default-link {
+        padding: 10px 0;
+        /* Espace plus important pour les petits écrans */
+    }
+}
+
+/* Ajout d'un padding pour compenser la hauteur du header */
+body {
+    padding-top: 30px;
+    /* Ajuste cette valeur à la hauteur de ton header */
+}

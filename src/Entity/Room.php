@@ -12,34 +12,24 @@ class Room
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+    #[ORM\Column(type: 'integer')]
+    private $id;
 
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    #[ORM\Column(type: 'string', length: 255)]
+    private $name;
 
-    #[ORM\Column]
-    private ?int $capacity = null;
+    #[ORM\Column(type: 'integer')]
+    private $capacity;
 
-    #[ORM\Column]
-    private ?bool $available = null;
+    #[ORM\Column(type: 'boolean')]
+    private $available;
 
-    /**
-     * @var Collection<int, Equipment>
-     */
-    #[ORM\ManyToMany(targetEntity: Equipment::class, inversedBy: 'rooms')]
-    private Collection $equipment;
-
-    /**
-     * @var Collection<int, Reservation>
-     */
-    #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'room_id')]
-    private Collection $reservations;
+    #[ORM\ManyToMany(targetEntity: Equipment::class)]
+    private $equipments;
 
     public function __construct()
     {
-        $this->equipment = new ArrayCollection();
-        $this->reservations = new ArrayCollection();
+        $this->equipments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -52,7 +42,7 @@ class Room
         return $this->name;
     }
 
-    public function setName(string $name): static
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -64,7 +54,7 @@ class Room
         return $this->capacity;
     }
 
-    public function setCapacity(int $capacity): static
+    public function setCapacity(int $capacity): self
     {
         $this->capacity = $capacity;
 
@@ -76,7 +66,7 @@ class Room
         return $this->available;
     }
 
-    public function setAvailable(bool $available): static
+    public function setAvailable(bool $available): self
     {
         $this->available = $available;
 
@@ -84,56 +74,30 @@ class Room
     }
 
     /**
-     * @return Collection<int, Equipment>
+     * @return Collection|Equipment[]
      */
-    public function getEquipment(): Collection
+    public function getEquipments(): Collection
     {
-        return $this->equipment;
+        return $this->equipments;
     }
 
-    public function addEquipment(Equipment $equipment): static
+    public function addEquipment(Equipment $equipment): self
     {
-        if (!$this->equipment->contains($equipment)) {
-            $this->equipment->add($equipment);
+        if (!$this->equipments->contains($equipment)) {
+            $this->equipments[] = $equipment;
         }
 
         return $this;
     }
 
-    public function removeEquipment(Equipment $equipment): static
+    public function removeEquipment(Equipment $equipment): self
     {
-        $this->equipment->removeElement($equipment);
+        $this->equipments->removeElement($equipment);
 
         return $this;
     }
-
-    /**
-     * @return Collection<int, Reservation>
-     */
-    public function getReservations(): Collection
+    public function __toString()
     {
-        return $this->reservations;
-    }
-
-    public function addReservation(Reservation $reservation): static
-    {
-        if (!$this->reservations->contains($reservation)) {
-            $this->reservations->add($reservation);
-            $reservation->setRoomId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReservation(Reservation $reservation): static
-    {
-        if ($this->reservations->removeElement($reservation)) {
-            // set the owning side to null (unless already changed)
-            if ($reservation->getRoomId() === $this) {
-                $reservation->setRoomId(null);
-            }
-        }
-
-        return $this;
+        return $this->name;
     }
 }

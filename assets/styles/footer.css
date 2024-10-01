@@ -1,0 +1,60 @@
+/* Styles pour le sticky footer */
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.content {
+    min-height: calc(100vh - 8rem);
+    /* Ajustez la hauteur en fonction de la hauteur de votre footer */
+    padding-bottom: 8rem;
+    /* Ajustez la hauteur en fonction de la hauteur de votre footer */
+}
+
+.footer-container {
+    height: 8rem;
+    /* Ajustez la hauteur en fonction de la hauteur de votre footer */
+    background-color: rgb(134, 190, 236);
+    display: flex;
+    align-items: center;
+    /* Centre verticalement le contenu du footer */
+    position: relative;
+    margin-top: -8rem;
+    /* Ajustez la hauteur en fonction de la hauteur de votre footer */
+    clear: both;
+}
+
+.footer-container .optimal-width {
+    width: 100%;
+}
+
+.footer-container .socials {
+    display: flex;
+    justify-content: center;
+    /* Centre horizontalement les icônes */
+    align-items: center;
+    /* Centre verticalement les icônes */
+    gap: 25px;
+}
+
+.footer-container a {
+    background-color: azure;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.footer-container i {
+    color: rgb(89, 182, 236);
+    font-size: 30px;
+}
+
+.footer-container a:hover {
+    transform: scale(1.2);
+}

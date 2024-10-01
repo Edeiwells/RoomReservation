@@ -1,0 +1,55 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+<section class="pending-reservations optimal-width">
+    <h1>Réservations en attente</h1>
+
+    {% if reservations is empty %}
+        <p>Aucune réservation en attente.</p>
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom de l'employé</th>
+                    <th>Nom de la salle</th>
+                    <th>Jour de la réservation</th>
+                    <th>Créneau horaire</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reservation in reservations %}
+                    <tr>
+                        <td>{{ reservation.userId.name }}</td>
+                        <td>{{ reservation.roomId.name }}</td>
+                        <td>{{ reservation.createdAt|date('d/m/Y') }}</td>
+                        <td>{{ reservation.createdAt|date('H:i') }} - {{ reservation.endAt|date('H:i') }}</td>
+                        <td>
+                            {% if reservation.status == 'confirmed' %}
+                                Confirmée
+                            {% elseif reservation.status == 'refused' %}
+                                Refusée
+                            {% else %}
+                                En attente de confirmation
+                            {% endif %}
+                        </td>
+                        <td>
+                            <form action="{{ path('admin_confirm_reservation', {id: reservation.id}) }}" method="post" style="display:inline;">
+                                <input type="hidden" name="_token" value="{{ csrf_token('confirm' ~ reservation.id) }}">
+                                <button type="submit" class="btn btn-primary">Confirmer</button>
+                            </form>
+                            <form action="{{ path('admin_refuse_reservation', {id: reservation.id}) }}" method="post" style="display:inline;">
+                                <input type="hidden" name="_token" value="{{ csrf_token('refuse' ~ reservation.id) }}">
+                                <button type="submit" class="btn btn-danger">Refuser</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <a href="{{ path('admin') }}">Retour au dashboard</a>
+</section>
+{% endblock %}

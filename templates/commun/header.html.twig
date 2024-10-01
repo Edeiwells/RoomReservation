@@ -1,0 +1,20 @@
+<header>
+    <div class="optimal-width">
+        <div class="header">
+            <a href="{{ path('app_homepage') }}"> Accueil</a>
+            <div class="links">
+            {% if app.user and 'ROLE_ADMIN' in app.user.getRoles() %}
+                    <a class="default-link" href="{{ path('admin') }}">Admin Dashboard</a>
+                {% endif %}
+                    <a class="default-link" href="{{ path('app_room') }}">Réserver</a>
+                {% if app.user %}
+                    <a class="default-link" href="{{ path('app_user_reservations')}}">{{ app.user.getName() }}</a>
+                    <a class="default-link" href="{{ path('app_logout') }}">Deconnexion</a>
+                {% else %}
+                    <a class="default-link" href="{{ path('app_login') }}">Connexion</a>
+                    <a class="default-link" href="{{ path('app_register') }}">S'inscrire</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>

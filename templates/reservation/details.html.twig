@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la réservation{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/reservation-details.css') }}">
+{% endblock %}
+{% block body %}
+<section class="reservation-details optimal-width">
+    <h1>Détails de la réservation</h1>
+
+    <p><strong>Nom de la salle :</strong> {{ room.name }}</p>
+    <p><strong>Jour de la réservation :</strong> {{ reservation.createdAt|date('d/m/Y') }}</p>
+    <p><strong>Créneau horaire :</strong> 
+        {{ reservation.createdAt|date('H:i') }} - 
+        {{ reservation.endAt|date('H:i') }}
+    </p>
+    <p><strong>Status :</strong> {{ reservation.status }}</p>
+
+    <a href="{{ path('app_homepage') }}">Retour à l'accueil</a>
+    <a href="{{ path('app_user_reservations') }}">Mes réservations</a>
+</section>
+{% endblock %}

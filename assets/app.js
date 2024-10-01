@@ -6,5 +6,14 @@ import './bootstrap.js';
  * which should already be in your base.html.twig.
  */
 import './styles/app.css';
+import './styles/header.css';
+import './styles/homepage.css';
+import './styles/login.css';
+import './styles/footer.css';
+import './styles/reservation-details.css';
+import './styles/reservation-edit.css';
+import './styles/reservation-room.css';
+import './styles/reservations-user.css';
+import './styles/choisir-date.css';
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Réservation{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/reservation-edit.css') }}">
+{% endblock %}
+{% block body %}
+<section class="edit-reservation optimal-width">
+    <h1>Modifier Réservation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_user_reservations') }}">Retour à mes réservations</a>
+</section>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Réserver une salle{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/reservation-room.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1>Réserver une salle</h1>
+    <p>Date sélectionnée : {{ date }}</p>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="hidden" name="date" value="{{ date }}">
+        <button type="submit">Réserver</button>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservation{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/choisir-date.css') }}">
+{% endblock %}
+
+{% block body %}
+<section class="reservation optimal-width">
+    <h1>Choisir son jour</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form.date) }}
+        <button type="submit">Suivant</button>
+        <a class="btn btn-primary" href="{{ path('app_room') }}">Retour en arrière</a>
+    {{ form_end(form) }}
+</section>
+{% endblock %}

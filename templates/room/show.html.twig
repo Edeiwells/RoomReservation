@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ReservationRoom{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/show.css') }}">
+{% endblock %}
+
+{% block body %}
+<section class="home optimal-width">
+
+    <h3>{{ room.name }}</h3>
+    <p>Capacité: {{ room.capacity }}</p>
+    <p>Équipements:</p>
+    <ul>
+        {% for equipment in equipments %}
+            <li>{{ equipment.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ path('app_reservation', {'roomId': room.id}) }}">Réserver</a>
+    <a class="btn btn-primary" href="{{ path('app_room') }}">Retour en arrière</a>
+
+</section>
+{% endblock %}

@@ -1,0 +1,51 @@
+/* Global Styles */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    /* Couleur de fond légère */
+}
+
+.optimal-width {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Section principale de la page d'accueil */
+.home {
+    position: relative;
+    height: 100vh;
+    /* Hauteur égale à celle de la fenêtre */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Image de fond */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    /* Texte blanc pour contraster avec l'image */
+    text-align: center;
+}
+
+.home h1 {
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fond semi-transparent pour rendre le texte lisible */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Ajustement responsive pour petits écrans */
+@media (max-width: 768px) {
+    .home h1 {
+        font-size: 32px;
+        padding: 15px;
+    }
+}

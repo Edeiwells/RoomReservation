@@ -1,0 +1,101 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.room-section {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.room-section h1 {
+    text-align: center;
+    color: #333;
+}
+
+.room-section-filters {
+    margin-bottom: 20px;
+}
+
+.room-section-filters h3 {
+    margin-bottom: 10px;
+}
+
+.room-section-filters ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.room-section-filters ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.room-section-filters ul li a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.room-section-filters ul li a:hover {
+    text-decoration: underline;
+}
+
+.room-section-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.room-section-room {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.room-section-room h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.room-section-room img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.room-section-room p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.room-section-room ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.room-section-room ul li {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.room-section-room a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.room-section-room a:hover {
+    background-color: #0056b3;
+}
